@@ -1,8 +1,8 @@
 <html>
   <head>
     <!-- Load TensorFlow.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.15.3/dist/tf.min.js"> </script> 
- 
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.15.3/dist/tf.min.js"> </script>
+
     <!-- Place your code in the script tag below. You can also use an external .js file -->
     <script>
       class CharacterTable {
@@ -60,7 +60,7 @@
               buf.set(1, n, i, this.charIndices[char]);
             }
           }
-          return buf.toTensor().as3D(numExamples, numRows, this.size);
+          return tf.cast(buf.toTensor().as2D(numExamples, this.size), 'int32');
         }
 
         /**
@@ -142,22 +142,19 @@
       function convertDataToTensors(data, charTable, digits) {
         const maxLen = digits + 1 + digits;
         const questions = data.map(datum => datum[0]);
-        const answers = data.map(datum => datum[1]);
-        return [
-          charTable.encodeBatch(questions, maxLen),
-          charTable.encodeBatch(answers, digits + 1),
-        ];
+        return charTable.encodeBatch(questions, maxLen);
       }
- 
+
+      //const data = generateData(1, 1, false);
+      //const split = Math.floor(1 * 0.9);
+      //trainData = data.slice(0, 1);
       const chars = '0123456789+ ';
       charTable = new CharacterTable(chars);
-      const data = generateData(10, trainingSize, false);
-      const split = Math.floor(trainingSize * 0.9);
-      this.trainData = data.slice(0, split);
-      [trainXs, trainYs] = convertDataToTensors(dataTrain, charTable, 10);
-      
-      const MODEL_URL = '/model/tensorflowjs_model.pb'
-      const WEIGHTS_URL = '/model/weights_manifest.json'
+      var datahere = [[1, 2, 3, 4]];
+      var trainXs = convertDataToTensors(datahere, charTable, 0);
+
+      const MODEL_URL = 'model/tensorflowjs_model.pb'
+      const WEIGHTS_URL = 'model/weights_manifest.json'
       async function fun(){
           console.log("111");
           console.time('Loading of model');
@@ -166,12 +163,13 @@
           document.write(0-2);
           console.log("222");
           console.timeEnd('Loading of model');
+          console.log(trainXs);
           model.predict(trainXs).print();
       }
       fun()
-    </script> 
+    </script>
   </head>
- 
+
   <body>
   </body>
 </html>
