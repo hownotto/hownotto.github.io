@@ -8,4 +8,5 @@ const model = await tf.loadFrozenModel(MODEL_URL, WEIGHTS_URL)
 
 const prediction = model.predict()
 
+document.write(prediction);
 document.write(5 + 6);
