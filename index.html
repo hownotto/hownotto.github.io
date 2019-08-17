@@ -151,7 +151,9 @@
  
       const chars = '0123456789+ ';
       charTable = new CharacterTable(chars);
-      var dataTrain = ["4", "9", "16", "25"];
+      const data = generateData(10, trainingSize, false);
+      const split = Math.floor(trainingSize * 0.9);
+      this.trainData = data.slice(0, split);
       [trainXs, trainYs] = convertDataToTensors(dataTrain, charTable, 10);
       
       const MODEL_URL = '/model/tensorflowjs_model.pb'
