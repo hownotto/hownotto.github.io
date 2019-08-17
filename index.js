@@ -5,3 +5,5 @@ const WEIGHTS_URL = '/model/weights_manifest.json'
 
 // https://js.tensorflow.org/api/0.15.1/#loadFrozenModel
 const model = await tf.loadFrozenModel(MODEL_URL, WEIGHTS_URL)
+
+const prediction = model.predict()
