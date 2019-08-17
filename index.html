@@ -2,7 +2,8 @@
   <head>
     <!-- Load TensorFlow.js -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.9.0/dist/tf.min.js"> </script> 
- 
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter@0.2.0"></script>
+
  
     <!-- Place your code in the script tag below. You can also use an external .js file -->
     <script>
@@ -15,7 +16,7 @@
           console.log("111");
           console.time('Loading of model');
           document.write(5+2);
-          const model = await tf.loadFrozenModel(MODEL_URL, WEIGHTS_URL);
+          const model = await tf_converter.loadFrozenModel(MODEL_URL, WEIGHTS_URL);
           document.write(0-2);
           console.log("222");
           console.timeEnd('Loading of model');
