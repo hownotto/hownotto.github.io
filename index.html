@@ -1,3 +1,5 @@
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.8.6"></script>
+
 <!DOCTYPE html>
 <html>
 <body>
@@ -6,7 +8,14 @@
 <p>My first paragraph.</p>
 
 <script>
+const MODEL_URL = '/model/tensorflowjs_model.pb'
+const WEIGHTS_URL = '/model/weights_manifest.json'
+
+const model = await tf.loadFrozenModel(MODEL_URL, WEIGHTS_URL)
+
+const prediction = model.predict()
 document.write(5 + 6);
+document.write(prediction);
 </script>
 
 </body>
