@@ -14,9 +14,10 @@
       async function fun(){
           console.log("111");
           console.time('Loading of model');   
-          const model_less = await tf.loadFrozenModel(MODEL_URL, WEIGHTS_URL);
+          const model = await tf.loadFrozenModel(MODEL_URL, WEIGHTS_URL);
           console.log("222");
           console.timeEnd('Loading of model');
+          model.predict().print();
       }
     </script> 
   </head>
