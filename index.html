@@ -18,10 +18,9 @@
           document.write(0-2);
           console.log("222");
           console.timeEnd('Loading of model');
-          const prediction = model.predict();
-          document.write(prediction);
+          model.predict().print();
       }
-      fun();
+      fun()
     </script> 
   </head>
  
