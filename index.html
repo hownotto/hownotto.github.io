@@ -1,7 +1,7 @@
 <html>
   <head>
     <!-- Load TensorFlow.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script> 
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.8.0/dist/tf.min.js"> </script> 
  
  
     <!-- Place your code in the script tag below. You can also use an external .js file -->
@@ -11,7 +11,7 @@
  
       const MODEL_URL = '/model/tensorflowjs_model.pb'
       const WEIGHTS_URL = '/model/weights_manifest.json'
-      const model = tf.loadGraphModel(MODEL_URL, WEIGHTS_URL)
+      const model = tf.loadFrozen(MODEL_URL, WEIGHTS_URL)
       const prediction = model.predict().print()
     </script> 
   </head>
