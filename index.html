@@ -11,8 +11,13 @@
  
       const MODEL_URL = '/model/tensorflowjs_model.pb'
       const WEIGHTS_URL = '/model/weights_manifest.json'
-      const model = tf.loadGraphModel(MODEL_URL, WEIGHTS_URL)
-      const prediction = model.predict().print()
+      async function fun(){
+          console.log("111");
+          console.time('Loading of model');   
+          const model_less = await tf.loadFrozenModel(MODEL_URL, WEIGHTS_URL);
+          console.log("222");
+          console.timeEnd('Loading of model');
+      }
     </script> 
   </head>
  
