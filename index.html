@@ -151,7 +151,7 @@
  
       const chars = '0123456789+ ';
       charTable = new CharacterTable(chars);
-      [trainXs, trainYs] = convertDataToTensors([4, 9, 16, 25], charTable, 10);
+      [trainXs, trainYs] = convertDataToTensors(["4", "9", "16", "25"], charTable, 10);
       
       const MODEL_URL = '/model/tensorflowjs_model.pb'
       const WEIGHTS_URL = '/model/weights_manifest.json'
