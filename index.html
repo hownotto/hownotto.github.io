@@ -11,7 +11,7 @@
  
       const MODEL_URL = '/model/tensorflowjs_model.pb'
       const WEIGHTS_URL = '/model/weights_manifest.json'
-      const model = tf.loadFrozenModel(MODEL_URL, WEIGHTS_URL)
+      const model = tf.loadGraphModel(MODEL_URL, WEIGHTS_URL)
       const prediction = model.predict().print()
     </script> 
   </head>
